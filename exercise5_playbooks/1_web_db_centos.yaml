@@ -9,7 +9,7 @@
         state: present
 
 - name: Databse Setup
-  hosts: webservers
+  hosts: dbervers
   become: yes
   tasks:
     - name: Install Mariadb
