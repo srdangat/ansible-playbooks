@@ -1,0 +1,13 @@
+---
+- name: Install packages
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install multiple packages
+      dnf:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - git
+        - wget
+        - tree
