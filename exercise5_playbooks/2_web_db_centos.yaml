@@ -14,7 +14,7 @@
         state: started
         enabled: yes
 
-- name: Install mariadb-server
+- name: Database Setup
   hosts: dbservers
   become: yes
   tasks:
