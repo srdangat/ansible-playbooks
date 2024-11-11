@@ -1,0 +1,24 @@
+1. Playbook:
+- You can define variables directly in your playbook under vars,or use vars_files to load them from an external file.
+2. Inventory Based:
+- In inventory file:
+    group_vars/all
+    group_vars/groupname
+    host_vars/hostname
+3. Roles:
+- In Ansible roles,variables can be defined in various locations:
+    defaults/main.yml: Low-priority variables.
+    vars/main.yml: High-priority variables.
+    tasks/main.yml: Variables specific to tasks.
+
+Fact Variables: setup module
+- ansible_os_family: OS name like RedHat,Debian etc
+- ansible_processor_cores: Number of CPU cores
+- ansible_kernel: Kernel Version
+- ansible_devices: Connected Device Information
+- ansible_default_ipv4: IP,MAC address,gateway etc
+- ansible_architecture: 64 bit or 32 bit
+
+Store Output: register module
+- To store the output of a task in Ansible
+- Use the register keyword
