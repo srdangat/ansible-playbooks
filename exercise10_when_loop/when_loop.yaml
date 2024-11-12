@@ -1,0 +1,36 @@
+---
+- name: Update packages on Ubuntu and CentOS
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt on Ubuntu
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_distribution == 'Ubuntu'
+    
+    - name: Update yum on CentOS
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_distribution == 'CentOS'
+
+    - name: Install necessary packages for Ubuntu
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - vim
+        - git
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install necessary packages for CentOS
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - vim
+        - git
+      when: ansible_distribution == 'CentOS'
