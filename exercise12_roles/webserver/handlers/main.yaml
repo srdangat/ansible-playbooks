@@ -1,0 +1,4 @@
+---
+# handlers file for roles/webserver
+- name: restart-webserver
+  service: name=httpd state=restarted
