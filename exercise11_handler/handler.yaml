@@ -1,0 +1,17 @@
+---
+- name: Handler
+  hosts: web02
+  tasks:
+    - name: Restart SSH Daemon
+      debug:
+        msg: "Sample Task to Restart sshd daemon"
+    - service:
+        name: sshd
+        state: restarted
+      notify:
+        - start sshd
+
+  handlers:
+    - name: start sshd
+      debug:
+        msg: "sshd has been restarted"
